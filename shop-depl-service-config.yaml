@@ -21,6 +21,10 @@ spec:
           env:
             - name: PORT
               value: "8080"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:8080"]
 ---
 apiVersion: v1
 kind: Service
@@ -60,6 +64,10 @@ spec:
               value: "8080"
             - name: PRODUCT_CATALOG_SERVICE_ADDR
               value: "productcatalogservice:3550"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:8080"]
 ---
 apiVersion: v1
 kind: Service
@@ -97,6 +105,10 @@ spec:
           env:
             - name: PORT
               value: "3550"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:3550"]
 
 ---
 apiVersion: v1
@@ -135,6 +147,10 @@ spec:
           env:
             - name: PORT
               value: "50051"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50051"]
 
 ---
 apiVersion: v1
@@ -173,6 +189,10 @@ spec:
           env:
             - name: PORT
               value: "7000"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:7000"]
 
 ---
 apiVersion: v1
@@ -211,6 +231,10 @@ spec:
           env:
             - name: PORT
               value: "50051"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50051"]
 
 ---
 apiVersion: v1
@@ -249,6 +273,10 @@ spec:
           env:
             - name: PORT
               value: "9555"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9555"]
 
 ---
 apiVersion: v1
@@ -289,6 +317,10 @@ spec:
               value: "7070"
             - name: REDIS_ADDR
               value: "redis-cart:6379"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:7070"]
 
 ---
 apiVersion: v1
@@ -327,6 +359,10 @@ spec:
           volumeMounts:
             - name: redis-data
               mountPath: /data
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:6379"]
       volumes:
         - name: redis-data
           emptyDir: {}
@@ -379,6 +415,10 @@ spec:
               value: "emailservice:8080"
             - name: PAYMENT_SERVICE_ADDR
               value: "paymentservice:50051"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:5050"]
 
 ---
 apiVersion: v1
@@ -432,6 +472,10 @@ spec:
               value: "checkoutservice:5050"
             - name: AD_SERVICE_ADDR
               value: "adservice:9555"
+          livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:8080"]
 
 ---
 apiVersion: v1
