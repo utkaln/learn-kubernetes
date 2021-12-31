@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/emailservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/emailservice:v0.3.4
           ports:
             - containerPort: 8080
           env:
@@ -25,6 +25,17 @@ spec:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:8080"]
+          readinessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:8080"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
 ---
 apiVersion: v1
 kind: Service
@@ -56,7 +67,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/recommendationservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/recommendationservice:v0.3.4
           ports:
             - containerPort: 8080
           env:
@@ -68,6 +79,11 @@ spec:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:8080"]
+          readinessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:8080"]
+
 ---
 apiVersion: v1
 kind: Service
@@ -99,13 +115,17 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/productcatalogservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/productcatalogservice:v0.3.4
           ports:
             - containerPort: 3550
           env:
             - name: PORT
               value: "3550"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:3550"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:3550"]
@@ -141,13 +161,17 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/paymentservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/paymentservice:v0.3.4
           ports:
             - containerPort: 50051
           env:
             - name: PORT
               value: "50051"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50051"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:50051"]
@@ -183,13 +207,17 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/currencyservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/currencyservice:v0.3.4
           ports:
             - containerPort: 7000
           env:
             - name: PORT
               value: "7000"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:7000"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:7000"]
@@ -225,13 +253,17 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/shippingservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/shippingservice:v0.3.4
           ports:
             - containerPort: 50051
           env:
             - name: PORT
               value: "50051"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50051"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:50051"]
@@ -267,13 +299,17 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/adservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/adservice:v0.3.4
           ports:
             - containerPort: 9555
           env:
             - name: PORT
               value: "9555"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:9555"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:9555"]
@@ -309,7 +345,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/cartservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/cartservice:v0.3.4
           ports:
             - containerPort: 7070
           env:
@@ -318,6 +354,10 @@ spec:
             - name: REDIS_ADDR
               value: "redis-cart:6379"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:7070"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:7070"]
@@ -359,10 +399,16 @@ spec:
           volumeMounts:
             - name: redis-data
               mountPath: /data
-          livenessProbe:
+          readinessProbe:
+            initialDelaysSeconds: 5
             periodSeconds: 5
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:6379"]
+            tcpSocket:
+              port: 6379
+          livenessProbe:
+            initialDelaysSeconds: 5
+            periodSeconds: 5
+            tcpSocket:
+              port: 6379
       volumes:
         - name: redis-data
           emptyDir: {}
@@ -397,7 +443,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/checkoutservice:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/checkoutservice:v0.3.4
           ports:
             - containerPort: 5050
           env:
@@ -416,6 +462,10 @@ spec:
             - name: PAYMENT_SERVICE_ADDR
               value: "paymentservice:50051"
           livenessProbe:
+            periodSeconds: 5
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:5050"]
+          readinessProbe:
             periodSeconds: 5
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:5050"]
@@ -450,7 +500,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: gcr.io/google-samples/microservices-demo/frontend:v.0.3.4
+          image: gcr.io/google-samples/microservices-demo/frontend:v0.3.4
           ports:
             - containerPort: 8080
           env:
@@ -472,11 +522,18 @@ spec:
               value: "checkoutservice:5050"
             - name: AD_SERVICE_ADDR
               value: "adservice:9555"
-          livenessProbe:
+          readinessProbe:
+            initialDelaysSeconds: 5
             periodSeconds: 5
-            exec:
-              command: ["/bin/grpc_health_probe", "-addr=:8080"]
-
+            httpGet:
+              path: /health
+              port: 30007
+          livenessProbe:
+            initialDelaysSeconds: 5
+            periodSeconds: 5
+            httpGet:
+              path: /health
+              port: 30007
 ---
 apiVersion: v1
 kind: Service
