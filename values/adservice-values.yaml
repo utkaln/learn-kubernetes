@@ -1,0 +1,10 @@
+appName: adservice
+appImage: gcr.io/google-samples/microservices-demo/adservice
+appImageTag: v0.3.4
+appReplicaCount: 2
+containerPort: 9555
+servicePort: 9555
+serviceType: ClusterIP
+containerEnvVars:
+  - name: PORT
+    value: "9555"

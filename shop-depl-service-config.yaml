@@ -134,11 +134,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: paymentservice
+  name: productcatalogservice
 spec:
   type: ClusterIP
   selector:
-    app: paymentservice
+    app: productcatalogservice
   ports:
     - protocol: TCP
       port: 3550
@@ -378,7 +378,7 @@ spec:
 
 ---
 apiVersion: apps/v1
-kind: Deployments
+kind: Deployment
 metadata:
   name: redis-cart
 spec:
@@ -540,11 +540,10 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: frontend
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
-      nodePort: 30007
