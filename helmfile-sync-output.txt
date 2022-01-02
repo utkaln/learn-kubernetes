@@ -1,0 +1,171 @@
+Building dependency release=rediscart, chart=redis
+Building dependency release=cartservice, chart=shopping
+Building dependency release=checkoutservice, chart=shopping
+Building dependency release=adservice, chart=shopping
+Building dependency release=currencyservice, chart=shopping
+Building dependency release=frontend, chart=shopping
+Building dependency release=emailservice, chart=shopping
+Building dependency release=paymentservice, chart=shopping
+Building dependency release=productcatalogservice, chart=shopping
+Building dependency release=recommendationservice, chart=shopping
+Building dependency release=shippingservice, chart=shopping
+Affected releases are:
+  adservice (shopping) UPDATED
+  cartservice (shopping) UPDATED
+  checkoutservice (shopping) UPDATED
+  currencyservice (shopping) UPDATED
+  emailservice (shopping) UPDATED
+  frontend (shopping) UPDATED
+  paymentservice (shopping) UPDATED
+  productcatalogservice (shopping) UPDATED
+  recommendationservice (shopping) UPDATED
+  rediscart (redis) UPDATED
+  shippingservice (shopping) UPDATED
+
+Upgrading release=rediscart, chart=redis
+Upgrading release=adservice, chart=shopping
+Upgrading release=currencyservice, chart=shopping
+Upgrading release=checkoutservice, chart=shopping
+Upgrading release=emailservice, chart=shopping
+Upgrading release=frontend, chart=shopping
+Upgrading release=cartservice, chart=shopping
+Upgrading release=productcatalogservice, chart=shopping
+Upgrading release=recommendationservice, chart=shopping
+Upgrading release=shippingservice, chart=shopping
+Upgrading release=paymentservice, chart=shopping
+Release "paymentservice" does not exist. Installing it now.
+NAME: paymentservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^paymentservice$
+paymentservice	default  	1       	2022-01-02 12:41:05.514972 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "rediscart" does not exist. Installing it now.
+NAME: rediscart
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^rediscart$
+Release "shippingservice" does not exist. Installing it now.
+NAME: shippingservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^shippingservice$
+Release "checkoutservice" does not exist. Installing it now.
+NAME: checkoutservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^checkoutservice$
+shippingservice	default  	1       	2022-01-02 12:41:05.776717 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+rediscart	default  	1       	2022-01-02 12:41:05.861138 -0500 EST	deployed	redis-0.1.0	1.16.0     
+
+Release "frontend" does not exist. Installing it now.
+NAME: frontend
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^frontend$
+Release "emailservice" does not exist. Installing it now.
+NAME: emailservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^emailservice$
+checkoutservice	default  	1       	2022-01-02 12:41:05.731927 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+frontend	default  	1       	2022-01-02 12:41:05.783557 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "adservice" does not exist. Installing it now.
+NAME: adservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^adservice$
+emailservice	default  	1       	2022-01-02 12:41:05.877342 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "currencyservice" does not exist. Installing it now.
+NAME: currencyservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^currencyservice$
+adservice	default  	1       	2022-01-02 12:41:05.878663 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "cartservice" does not exist. Installing it now.
+NAME: cartservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^cartservice$
+currencyservice	default  	1       	2022-01-02 12:41:05.745139 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "productcatalogservice" does not exist. Installing it now.
+NAME: productcatalogservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^productcatalogservice$
+cartservice	default  	1       	2022-01-02 12:41:05.742886 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+Release "recommendationservice" does not exist. Installing it now.
+NAME: recommendationservice
+LAST DEPLOYED: Sun Jan  2 12:41:05 2022
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+
+Listing releases matching ^recommendationservice$
+productcatalogservice	default  	1       	2022-01-02 12:41:05.8546 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+recommendationservice	default  	1       	2022-01-02 12:41:05.828669 -0500 EST	deployed	shopping-0.1.0	1.16.0     
+
+
+UPDATED RELEASES:
+NAME                    CHART      VERSION
+paymentservice          shopping     0.1.0
+rediscart               redis        0.1.0
+shippingservice         shopping     0.1.0
+checkoutservice         shopping     0.1.0
+frontend                shopping     0.1.0
+emailservice            shopping     0.1.0
+adservice               shopping     0.1.0
+currencyservice         shopping     0.1.0
+cartservice             shopping     0.1.0
+productcatalogservice   shopping     0.1.0
+recommendationservice   shopping     0.1.0
+
